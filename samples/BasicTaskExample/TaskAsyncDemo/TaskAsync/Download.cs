@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Net.Http; // new in 4.5 
 
-namespace TaskAsync
+namespace TaskAsyncDemo
 {
     public class Download
     {
@@ -20,7 +20,10 @@ namespace TaskAsync
 
             HttpResponseMessage response = await client.GetAsync(uri);
             response.EnsureSuccessStatusCode();
-            return await response.Content.ReadAsStringAsync();
+
+            string result = await response.Content.ReadAsStringAsync();
+
+            return result;
         }
 
         public async Task<byte[]> GetBinary(Uri uri)

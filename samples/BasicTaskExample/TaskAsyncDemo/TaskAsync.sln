@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskAsyncDemo", "TaskAsync\TaskAsyncDemo.csproj", "{DA1F28F1-84A7-4019-933C-4AC232A50075}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{39D7F38F-A4E2-4B44-BCEE-F1483BBC1C0C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DA1F28F1-84A7-4019-933C-4AC232A50075}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DA1F28F1-84A7-4019-933C-4AC232A50075}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DA1F28F1-84A7-4019-933C-4AC232A50075}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DA1F28F1-84A7-4019-933C-4AC232A50075}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
