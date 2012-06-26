@@ -29,6 +29,7 @@ obj/
 [Rr]elease*/
 _ReSharper*/
 *.resharper
+_ReSharper.*
 [Tt]est[Rr]esult*
 [Bb]uild/
 ~$*
