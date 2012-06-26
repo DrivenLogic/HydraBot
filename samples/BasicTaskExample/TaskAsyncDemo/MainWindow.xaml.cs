@@ -23,7 +23,9 @@ namespace TaskAsyncDemo
     {
         Logger _log = LogManager.GetCurrentClassLogger();
 
-        Download _download;
+        private Download _download;
+        private Parse _parse;
+
         string _hyperTextResult;
         List<Uri> _binaries;
 
@@ -31,23 +33,28 @@ namespace TaskAsyncDemo
         {
             InitializeComponent();
             _download = new Download();
+            _parse= new Parse();
         }
 
         private async void Button_Click_1(object sender, RoutedEventArgs e)
         {
             _log.Info("begin awaiting hypertext");
-            //get hypertext
-            string text = await Task.Run(()=>_download.GetHypertext(new Uri("https://twitter.com/#!/DrivenLogic/followers")));
+            string text = await _download.GetHypertext(new Uri("https://twitter.com/#!/DrivenLogic/followers"));
             textBox1.Text = text;
 
+
+
             _log.Info("Ended Awaiting hypertext");
+
+            _binaries = await _parse.MatchBinaries(text);
+            _binaries.ForEach(b => textBox1.Text += b.ToString());
 
             //parse content
 
             //download binaries 
 
             //process results
-            
+
         }
 
 

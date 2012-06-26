@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IEnumerableStateMachine", "IEnumerableStateMachine.csproj", "{DC9ACFA1-E090-42CE-B72D-68324F80621D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DC9ACFA1-E090-42CE-B72D-68324F80621D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DC9ACFA1-E090-42CE-B72D-68324F80621D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DC9ACFA1-E090-42CE-B72D-68324F80621D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DC9ACFA1-E090-42CE-B72D-68324F80621D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

@@ -57,7 +57,7 @@ namespace TaskAsyncDemo
 			Regex binaryRegex = new Regex(
 
                 // Normal links
-                @"(?<=src\=\""|href\=\"")[^""']*.(\.jpg)(?:/?[^""']*)", // working WW
+                @"(?<=src\=\""|href\=\"")[^""']*.(\.jpg|\.gif|.png)(?:/?[^""']*)", // working WW
                 
                 // this is a bit rough, no positive look behind for src or for href
                 //@"[^""']*.(\.jpg|\.mpeg|\.mpg|\.wmv)(?:/?[^""']*)",

@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskAsyncDemo", "TaskAsync\TaskAsyncDemo.csproj", "{DA1F28F1-84A7-4019-933C-4AC232A50075}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskAsyncDemo", "TaskAsyncDemo\TaskAsyncDemo.csproj", "{DA1F28F1-84A7-4019-933C-4AC232A50075}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{39D7F38F-A4E2-4B44-BCEE-F1483BBC1C0C}"
 EndProject

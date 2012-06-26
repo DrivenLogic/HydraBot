@@ -3,12 +3,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Net.Http; // new in 4.5 
+using System.Net.Http;
+using NLog;
+
+// new in 4.5 
 
 namespace TaskAsyncDemo
 {
     public class Download
     {
+        Logger _log = LogManager.GetCurrentClassLogger();
+
         public Download()
         {
         }
@@ -22,6 +27,8 @@ namespace TaskAsyncDemo
             response.EnsureSuccessStatusCode();
 
             string result = await response.Content.ReadAsStringAsync();
+
+            _log.Info("Completed hypertext download");
 
             return result;
         }
