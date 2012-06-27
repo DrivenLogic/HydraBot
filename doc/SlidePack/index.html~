@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en-US" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="utf-8"/>
+    <title></title>
+    <link rel="stylesheet" href="css/main.css"/>
+    <link rel="stylesheet" href="css/font-awesome.css">
+</head>
+<body>
+<div id="impress" class="impress-not-supported">
+<div class="fallback-message">
+    <p>Your browser <b>doesn't support the features required</b> by impress.js, so you are presented with a simplified
+        version of this presentation.</p>
+
+    <p>For the best experience please use the latest <b>Chrome</b> or <b>Safari</b> browser.</p>
+</div>
+
+<div id="title" class="step slide with_height" data-scale="1">
+    <div class="title">
+        <h2>Nefarious web robots</h2>
+
+        <p>async and await!</p>
+        <img src="img/pimpwalk.jpg">
+    </div>
+</div>
+
+<div class="step slide" data-x="4000" data-scale="3">
+    <div class="section-title with_logo">
+        <h4>What? More Parallel Programing patterns?</h4>
+        <h2>Why?</h2>
+    </div>
+</div>
+
+<div class="step slide" data-x="4400" data-y="1400" data-rotate="90">
+    <div class="slide-title">
+        Moore's law (1965) Wikipedia :
+    </div>
+    <div class="slide-content">
+        <img src="img/gordon-moore-01.jpg" style="float: left; padding-right: 10px;">
+        <ol type="a" class="lv0_indent">
+            <li>
+                <q>
+                    A rule of thumb in the history of computing hardware whereby the number of transistors that can be
+                    placed inexpensively on an integrated circuit doubles approximately every two years.
+                </q>
+            </li>
+            <li>
+                <q>
+                    This trend has continued for more than half a century. 2005 sources expected it to continue until at
+                    least 2015 or 2020. However, the 2010 update to the International Technology Roadmap for
+                    Semiconductors has growth slowing at the end of 2013.
+                </q>
+            </li>
+        </ol>
+    </div>
+</div>
+
+<div class="step slide" data-x="3400" data-y="1400">
+    <div class="slide-title">
+        Multi-core / Many-core machines...
+    </div>
+    <div class="slide-content">
+        <img src="img/cores.png" width="786" height="290" alt="intel i7 Desktop">
+        <p>
+            CPU clock speed increases have eased... <em>The free ride is over!</em> performance gains are now via
+            multiple cores per processor.
+            Servers are fitted with many multi-core processors. Software must be multi-threaded to leverage these
+            compute performance gains!
+        </p>
+    </div>
+</div>
+
+<div class="step slide" data-x="3400" data-y="1400">
+    <div class="slide-title">
+        Amdahl's law
+    </div>
+    <div class="slide-content">
+        <img src="img/AmdahlsLaw.svg" height="400">
+        
+       <p> <q>The speedup of a program using multiple processors in parallel computing is limited by the time needed for the sequential fraction of the program.</q> - Wikipedia</p></div>
+</div>
+
+<div class="step slide" data-x="3400" data-y="1400">
+    <div class="slide-title">
+       The ideal situation
+    </div>
+    <div class="slide-content">
+        <p>At all times have <br/> <q><em> One thread ready to work per core </em></q></p>
+    </div>
+</div>
+
+<div class="step" data-x="0" data-y="0" data-scale="10">
+    <h1>So...</h1>
+</div>
+
+<div class="step slide" data-x="3400" data-y="2200" data-z="-500" data-rotate="270">
+    <div class="slide-content">
+        <ul class="lv0_indent">
+            <li>Multi-threading is difficult</li>
+            <li>Threads and shared data can cause your hair to fall out</li>
+            <li>Synchronisation of threads and call backs are messy at best</li>
+            <li>Existing managed code patterns "too difficult for developers" says Microsoft*</li>
+            <li>The managed asynchronous code landscape at Microsoft is in a state of flux...</li>
+        </ul>
+
+        <p style="font-size: 0.5em;">*Anders on a recent MVP survey</p>
+    </div>
+</div>
+
+<div class="step slide" data-x="3400" data-y="2200" data-rotate="270">
+    <div class="slide-title">
+        But what about the existing patterns...
+    </div>
+    <div class="slide-content">
+        <ul class="lv0_indent">
+            <li>The <em>Asynchronous Programming Model?</em> (APM or the Begin/End pattern)</li>
+            <li>The <em>Event-based asynchronous pattern?</em> (EAP)</li>
+        </ul>
+        <p>...</p>
+        <p><em>Stephen Toub says:</em>
+            <q>The new 'TAP Pattern' deprecates both of its predecessors, while at the same time providing the ability to easily
+                build migration routines from the APM and EAP to TAP.</q>
+        </p>
+    </div>
+</div>
+
+<div class="step slide" data-x="3400" data-y="2200" data-rotate="270">
+    <div class="slide-title">
+        Asynchronous Programming Model
+    </div>
+    <div class="slide-content">
+        <img src="img/APM.png"/>
+    </div>
+</div>
+
+<div class="step slide" data-x="3400" data-y="2200" data-rotate="270">
+    <div class="slide-title">
+        Event-based asynchronous pattern
+    </div>
+    <div class="slide-content">
+        <img src="img/EAP.png"/>
+    </div>
+</div>
+
+<div class="step slide" data-x="1000" data-y="1000" data-rotate="360">
+    <div class="slide-content">
+        <p>But you probably just used background worker or passed a delegate to a regular thread instead...</p>
+    </div>
+</div>
+
+<div class="step slide" data-x="4400" data-y="2200" data-rotate="180">
+    <div class="slide-title">
+       Enter TAP!
+    </div>
+    <div class="slide-content">
+        <img src="img/taps.jpg">
+        The <em>Task-based Asynchronous Pattern</em>
+        Is built on top of the TPL and is enabled by the latest CTP which adds two new keywords <code>await</code> and <code>async</code> along with some compiler changes.
+    </div>
+</div>
+<div class="step slide" data-x="5000" data-y="2500" data-rotate="180">
+    <div class="slide-title">
+       Why the Task-based Asynchronous Pattern?
+    </div>
+    <div class="slide-content">
+        <ul class="lv0_indent">
+            <li>Focuses on async composition rather than threads </li>
+            <li>Helps you write clean code for UI interaction </li>
+            <li>Allows the compiler do some of the heavy lifting </li>
+            <li>Smells just like co-routines and futures</li>
+            <li>Part of the mainline strategy for Parallel Programming on the .NET Framework</li>
+            <li>More async coming... Windows 8 introduces  new async API calls in the BCL</li>
+        </ul>
+    </div>
+</div>
+
+<div class="step slide" data-x="3000" data-y="2000" data-rotate="45">
+    <div class="slide-title">
+        Oh And.. what about...
+    </div>
+    <div class="slide-content">
+        <ul class="lv0_indent">
+            <li>Reactive extensions? (Rx)</li>
+            <li>CCR?</li>
+            <li>TPL Dataflow?</li>
+	    <li>Map Reduce</li>
+            <li>Windows RT?</li>
+            <li>Node.js, SignalR and web sockets?</li>
+        </ul>
+        <p>...</p>
+        <p>
+        </p>
+    </div>
+</div>
+
+<div  class="step slide" data-x="-1600" data-y="4200" data-rotate="180">
+<div class="section-title lower">
+        How does Task based programing make my life easier?
+</div>
+</div>
+
+<div  class="step slide" data-x="-1600" data-y="4200" data-rotate="180">
+    <div class="slide-content">
+       <p>&lt;lets see some code/&gt;</p>
+    </div>
+</div>
+
+<div id="questions" class="step slide" data-x="2200" data-y="3400" data-scale="3" data-rotate-y="90">
+    <div class="section-title lower">
+        <h3>Questions?</h3>
+    </div>
+</div>
+
+<div id="thank-you" class="step slide" data-x="3700" data-y="3900" data-scale="3" data-z="1000">
+    <div id="ty" class="slide-title">
+        Thank You!
+    </div>
+    <div class="slide-content">
+        <p>&nbsp;</p>
+
+        <p class="social">
+            <i class="icon-envelope-alt icon-large"></i><a href="mailto:andrew@drivenlogic.com.au">andrew@drivenlogic.com.au</a>
+        </p>
+
+        <p class="social">
+            <a href="http://www.linkedin.com/in/andrewmarkstone">
+                <i class="icon-linkedin icon-large"></i> /in/andrewmarkstone
+            </a>
+        </p>
+
+        <p class="social">
+            <a href="https://twitter.com/DrivenLogic.com.au">
+                <i class="icon-twitter icon-large"></i>
+                @DrivenLogic
+            </a>
+
+        <p class="social">
+            <a href="https://github.com/DrivenLogic">
+                <i class="icon-github-sign icon-large"></i>
+                https://github.com/drivenlogic
+            </a>
+        </p>
+
+    </div>
+</div>
+
+<div id="overview" class="step" data-x="1500" data-y="2000" data-scale="9"></div>
+
+</div>
+
+<a href="#/title"><div id="badge" title="Driven Logic Pty Ltd"></div></a>
+<script src="js/impress.min.js"></script>
+
+</body>
+</html>

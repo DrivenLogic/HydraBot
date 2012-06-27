@@ -12,7 +12,7 @@ namespace IEnumerableStateMachine
         static void Main(string[] args)
         {
             foreach (var item in StateMachineExample())
-            {
+             {
                 Console.WriteLine(item.ToString());
             }
 
@@ -21,12 +21,12 @@ namespace IEnumerableStateMachine
 
         static IEnumerable<int> StateMachineExample()
         {
-            //for (int i = 0; i < 3; i++)
-            //{
-            //    yield  return i;
-            //}
+            for (int i = 0; i < 3; i++)
+            {
+                yield return i;
+            }
 
-            return new EnumerableQuery<int>(new int[] {0, 1, 2, 3});
+           // return new EnumerableQuery<int>(new int[] {0, 1, 2, 3});
         }
     }
 }

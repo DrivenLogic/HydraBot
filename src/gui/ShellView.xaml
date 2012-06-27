@@ -1,0 +1,9 @@
+﻿<Window x:Class="HydraBot.Gui.ShellView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="ShellView" Height="300" Width="300">
+<StackPanel>
+        <Button x:Name="OpenModeless"
+		        Content="Open Window" />
+    </StackPanel>
+</Window>
