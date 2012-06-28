@@ -62,7 +62,7 @@
     <div class="slide-content">
         <img src="img/cores.png" width="786" height="290" alt="intel i7 Desktop">
         <p>
-            CPU clock speed increases have eased... <em>The free ride is over!</em> performance gains are now via
+            CPU clock speed increases have eased... <em>The free ride is somewhat slower. </em> Performance gains are now via
             multiple cores per processor.
             Servers are fitted with many multi-core processors. Software must be multi-threaded to leverage these
             compute performance gains!
@@ -76,18 +76,31 @@
     </div>
     <div class="slide-content">
         <img src="img/AmdahlsLaw.svg" height="400">
-        
-       <p> <q>The speedup of a program using multiple processors in parallel computing is limited by the time needed for the sequential fraction of the program.</q> - Wikipedia</p></div>
-</div>
 
+        <p> <q>The speedup of a program using multiple processors in parallel computing is limited by the time needed for the sequential fraction of the program.</q> - Wikipedia</p></div>
+</div>
 <div class="step slide" data-x="3400" data-y="1400">
     <div class="slide-title">
-       The ideal situation
+        The ideal situation
     </div>
     <div class="slide-content">
-        <p>At all times have <br/> <q><em> One thread ready to work per core </em></q></p>
+        <p>At all times have: <br/> <q><em>One thread ready to work per core </em></q> *</p>
+        <p style="font-size: 0.5em;">* That description is a little simplistic... but you get the idea.</p>
     </div>
 </div>
+<div class="step slide" data-x="3400" data-y="1400">
+    <div class="slide-title">
+        Measure, Measure, Measure...
+    </div>
+    <div class="slide-content">
+        <ul class="lv0_indent">
+            <li>Abstraction is the natural enemy of performance</li>
+            <li>A scientific approach will save you time and money in the long run</li>
+            <li>May I strongly suggest that you add runtime logging and performance metrics collection to all your projects up front :)</li>
+        </ul>
+     </div>
+</div>
+
 
 <div class="step" data-x="0" data-y="0" data-scale="10">
     <h1>So...</h1>
@@ -109,11 +122,11 @@
 
 <div class="step slide" data-x="3400" data-y="2200" data-rotate="270">
     <div class="slide-title">
-        But what about the existing patterns...
+        Huh? what existing patterns?
     </div>
     <div class="slide-content">
         <ul class="lv0_indent">
-            <li>The <em>Asynchronous Programming Model?</em> (APM or the Begin/End pattern)</li>
+            <li>The <em>Asynchronous Programming Model?</em></br> (APM or the Begin/End pattern)</li>
             <li>The <em>Event-based asynchronous pattern?</em> (EAP)</li>
         </ul>
         <p>...</p>
@@ -144,18 +157,17 @@
 
 <div class="step slide" data-x="1000" data-y="1000" data-rotate="360">
     <div class="slide-content">
-        <p>But you probably just used background worker or passed a delegate to a regular thread instead...</p>
+        <p>But you probably just used background worker or passed a delegate to a regular or pooled thread instead...</p>
     </div>
 </div>
 
 <div class="step slide" data-x="4400" data-y="2200" data-rotate="180">
     <div class="slide-title">
-       Enter TAP!
+       Enter TAP! <em>Task-based Asynchronous Pattern</em>
     </div>
     <div class="slide-content">
         <img src="img/taps.jpg">
-        The <em>Task-based Asynchronous Pattern</em>
-        Is built on top of the TPL and is enabled by the latest CTP which adds two new keywords <code>await</code> and <code>async</code> along with some compiler changes.
+        <p>The Task-based Asynchronous Pattern Is built on top of the TPL. Two new keywords <code>await</code> and <code>async</code> along with some compiler changes, bring new code composition techniques to the language.</p>
     </div>
 </div>
 <div class="step slide" data-x="5000" data-y="2500" data-rotate="180">
@@ -164,12 +176,13 @@
     </div>
     <div class="slide-content">
         <ul class="lv0_indent">
-            <li>Focuses on async composition rather than threads </li>
+            <li>Focuses on <em>code composition</em> rather than creating threads </li>
             <li>Helps you write clean code for UI interaction </li>
             <li>Allows the compiler do some of the heavy lifting </li>
             <li>Smells just like co-routines and futures</li>
             <li>Part of the mainline strategy for Parallel Programming on the .NET Framework</li>
-            <li>More async coming... Windows 8 (and RT) introduces more async API calls in the BCL</li>
+            <li>More async coming... Windows 8 (and RT) introduces further async APIs to the BCL</li>
+            <li>Can be used anywhere, phones, tablets, smart clients, web and application servers</li>
         </ul>
     </div>
 </div>
@@ -195,14 +208,27 @@
 </div>
 
 <div  class="step slide" data-x="-1600" data-y="4200" data-rotate="180">
-<div class="section-title lower">
-        How does Task based programing make my life easier?
+<div class="section-title">
+    <p>How does <em>Task based</em> programing make my life easier?</p>
+    <img src="img/computer-monkey.jpg">
 </div>
 </div>
 
 <div  class="step slide" data-x="-1600" data-y="4200" data-rotate="180">
+    <div class="section-title">
+       <p>&lt;it's code time/&gt;</p>
+    </div>
+</div>
+
+<div class="step slide" data-x="3000" data-y="2000" data-rotate="45">
+    <div class="slide-title">
+       Tools.
+    </div>
     <div class="slide-content">
-       <p>&lt;lets see some code/&gt;</p>
+        <ul class="lv0_indent">
+            <li>...</li>
+            <li>...</li>
+        </ul>
     </div>
 </div>
 
