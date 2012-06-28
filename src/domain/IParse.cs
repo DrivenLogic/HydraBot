@@ -6,7 +6,12 @@ using System.Threading.Tasks;
 
 namespace HydraBot.Domain
 {
+    /// <summary>
+    /// Returns Parsing tasks
+    /// </summary>
     public interface IParse
     {
+        IAssetPointer AssetPointer { get; set; }
+        Task<List<IParse>> Parse(string input);
     }
 }

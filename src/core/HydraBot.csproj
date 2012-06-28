@@ -7,8 +7,8 @@
     <ProjectGuid>{55E8F4C9-F2D7-49F6-B35A-D4ADDE31D383}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>HydraBot.Core</RootNamespace>
-    <AssemblyName>HydraBot.Core</AssemblyName>
+    <RootNamespace>HydraBot</RootNamespace>
+    <AssemblyName>HydraBot</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -39,7 +39,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="HydraBot.cs" />
+    <Compile Include="Bot.cs" />
     <Compile Include="DataStructures\CompletedTracker.cs" />
     <Compile Include="DataStructures\WorkStatusTracker.cs" />
     <Compile Include="DataStructures\WorkQueues.cs" />

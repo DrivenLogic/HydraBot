@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace HydraBot.Domain.impl
 {
-    public class Binary : IAssetPointer
+    public struct Binary : IAssetPointer
     {
         public string Uri { get; set; }
     }

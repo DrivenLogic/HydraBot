@@ -6,11 +6,23 @@ using System.Text;
 using System.Threading.Tasks;
 using HydraBot.Domain;
 
-namespace HydraBot.Core.DataStructures
+namespace HydraBot.DataStructures
 {
-    public class WorkQueues
+    /// <summary>
+    /// Oh the staticness!!
+    /// </summary>
+    public static class WorkQueues
     {
-        public ConcurrentQueue<Task<IDownload>> DownloadTaskQueue { get; set; }
-        public ConcurrentQueue<Task<IParse>> ParseTaskQueue { get; set; }
+        public static ConcurrentQueue<Task<string>> DownloadTaskQueue { get; set; }
+        public static ConcurrentQueue<Task<IParse>> ParseTaskQueue { get; set; }
+
+        /// <summary>
+        /// setup our thread safe collections. 
+        /// </summary>
+        static WorkQueues()
+        {
+            DownloadTaskQueue = new ConcurrentQueue<Task<string>>();
+            ParseTaskQueue = new ConcurrentQueue<Task<IParse>>();
+        }
     }
 }

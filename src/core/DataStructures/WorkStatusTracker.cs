@@ -5,10 +5,24 @@ using System.Text;
 using System.Threading.Tasks;
 using HydraBot.Domain;
 
-namespace HydraBot.Core.DataStructures
+namespace HydraBot.DataStructures
 {
+    /// <summary>
+    /// HashSet is fast but not tread safe
+    /// </summary>
     public class WorkStatusTracker
     {
-        public HashSet<IAssetPointer> Type { get; set; }
+        private HashSet<IAssetPointer> _statusTracker;
+
+        public WorkStatusTracker()
+        {
+            _statusTracker = new HashSet<IAssetPointer>();
+        }
+
+        // read 
+
+        // write
+
+        // update
     }
 }

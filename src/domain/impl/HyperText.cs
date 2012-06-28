@@ -6,8 +6,15 @@ using System.Threading.Tasks;
 
 namespace HydraBot.Domain.impl
 {
-    public class HyperText : IAssetPointer 
+    /// <summary>
+    /// A pointer to a web based resource a url/uri
+    /// </summary>
+    public class HyperTextPointer : IAssetPointer 
     {
         public string Uri { get; set; }
+        public HyperTextPointer(string uri)
+        {
+            Uri = uri;
+        }
     }
 }

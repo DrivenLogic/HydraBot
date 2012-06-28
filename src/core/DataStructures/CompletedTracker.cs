@@ -6,10 +6,23 @@ using System.Text;
 using System.Threading.Tasks;
 using HydraBot.Domain;
 
-namespace HydraBot.Core.DataStructures
+namespace HydraBot.DataStructures
 {
+    /// <summary>
+    /// HashSet is fast but not tread safe
+    /// </summary>
     public class CompletedTracker
     {
-        public HashSet<IAssetPointer> Type { get; set; }
+        private HashSet<IAssetPointer> _completedTracker;
+        public CompletedTracker()
+        {
+            _completedTracker = new HashSet<IAssetPointer>();
+        }
+
+        // read 
+
+        // write
+
+        // update
     }
 }
