@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HydraBot.Core
+namespace HydraBot.Domain
 {
-    public class Class1
+    public interface IAssetPointer
     {
+       string Uri { get; set; }
     }
 }

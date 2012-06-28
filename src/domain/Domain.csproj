@@ -40,7 +40,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class1.cs" />
+    <Compile Include="IAssetPointer.cs" />
+    <Compile Include="IDownload.cs" />
+    <Compile Include="impl\Binary.cs" />
+    <Compile Include="impl\HyperText.cs" />
+    <Compile Include="IParse.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="impl\RegexLib.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
