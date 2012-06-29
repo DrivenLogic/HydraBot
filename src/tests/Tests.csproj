@@ -58,14 +58,6 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\core\HydraBot.csproj">
-      <Project>{55e8f4c9-f2d7-49f6-b35a-d4adde31d383}</Project>
-      <Name>HydraBot</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Domain\Domain.csproj">
-      <Project>{36cbb189-e3c6-4e53-90ed-c56baf2cef3a}</Project>
-      <Name>Domain</Name>
-    </ProjectReference>
     <ProjectReference Include="..\gui\Gui.csproj">
       <Project>{bbcc35e9-ec63-4fc1-8692-39c179a4b164}</Project>
       <Name>Gui</Name>

@@ -7,9 +7,10 @@ using System.Net.Http;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using HydraBot.DataStructures;
 using NLog;
 
-namespace HydraBot.Domain.impl
+namespace HydraBot.Domain
 {
     /// <summary>
     /// must return tasks back to the bot controller
@@ -31,7 +32,7 @@ namespace HydraBot.Domain.impl
         /// </summary>
         /// <param name="uri"></param>
         /// <returns></returns>
-        public async Task GetHyperText(string uri)
+        public async Task GetText(string uri)
         {
             // .net 4.5 HttpClient
             HttpClient client = new HttpClient();
@@ -45,9 +46,9 @@ namespace HydraBot.Domain.impl
 
 
             //we have the response, put a parse task on the work queue
-            Task<List<string>> parseTask = parser.Parse(result);
+            Task parseTask = parser.Parse(result);
 
-            WorkQueues.
+            WorkQueues.ParseTaskQueue.Enqueue();
         }
 
         /// <summary>

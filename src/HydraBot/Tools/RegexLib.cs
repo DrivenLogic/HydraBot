@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HydraBot.Domain.impl
+namespace HydraBot.Domain
 {
     /// <summary>
     /// Static class to contain compiled regex

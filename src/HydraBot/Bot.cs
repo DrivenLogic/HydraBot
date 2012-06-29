@@ -6,7 +6,6 @@ using System.Text;
 using System.Threading.Tasks;
 using HydraBot.DataStructures;
 using HydraBot.Domain;
-using HydraBot.Domain.impl;
 
 namespace HydraBot
 {
@@ -34,7 +33,7 @@ namespace HydraBot
         /// <param name="startLocation"></param>
         public void SeedWorkQueue(IAssetPointer startLocation)
         {
-            Task<String> hypertextTask  = _downloader.GetHyperText(startLocation.Uri);
+            Task hypertextTask  = _downloader.GetHyperText(startLocation.Uri);
             WorkQueues.DownloadTaskQueue.Enqueue(hypertextTask);
         }
 

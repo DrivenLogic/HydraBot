@@ -35,3 +35,11 @@ _ReSharper.*
 ~$*
 
 /TODO.txt
+/doc/DDD.SlidePack/.idea/.name
+/doc/DDD.SlidePack/.idea/SlidePack.iml
+/doc/DDD.SlidePack/.idea/encodings.xml
+/doc/DDD.SlidePack/.idea/misc.xml
+/doc/DDD.SlidePack/.idea/modules.xml
+/doc/DDD.SlidePack/.idea/scopes/scope_settings.xml
+/doc/DDD.SlidePack/.idea/vcs.xml
+/doc/DDD.SlidePack/.idea/workspace.xml

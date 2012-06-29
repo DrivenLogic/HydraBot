@@ -30,8 +30,13 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="NLog, Version=2.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\NLog.2.0.0.2000\lib\net40\NLog.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -41,16 +46,21 @@
   <ItemGroup>
     <Compile Include="Bot.cs" />
     <Compile Include="DataStructures\CompletedTracker.cs" />
-    <Compile Include="DataStructures\ExtensionMethods.cs" />
+    <Compile Include="Tools\ExtensionMethods.cs" />
     <Compile Include="DataStructures\WorkStatusTracker.cs" />
     <Compile Include="DataStructures\WorkQueues.cs" />
+    <Compile Include="Domain\Binary.cs" />
+    <Compile Include="Domain\HttpDownloader.cs" />
+    <Compile Include="Domain\HttpParser.cs" />
+    <Compile Include="Domain\HyperText.cs" />
+    <Compile Include="Domain\IAssetPointer.cs" />
+    <Compile Include="Domain\IDownload.cs" />
+    <Compile Include="Domain\IParse.cs" />
+    <Compile Include="Tools\RegexLib.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Domain\Domain.csproj">
-      <Project>{36cbb189-e3c6-4e53-90ed-c56baf2cef3a}</Project>
-      <Name>Domain</Name>
-    </ProjectReference>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

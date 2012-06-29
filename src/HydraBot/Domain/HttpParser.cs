@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HydraBot.Domain.impl
+namespace HydraBot.Domain
 {
     /// <summary>
     /// Must return tasks back to the bot controller
@@ -13,10 +13,14 @@ namespace HydraBot.Domain.impl
     {
         public IAssetPointer AssetPointer { get; set; }
 
-        public Task<> Parse(string input)
+        public async Task Parse(string input)
         {
+            
+
             // tease out out all types of links 
            // pull out all the assets (links and binaries) 
+
+            // add the correct task type to the download queue. 
 
         }
     }
