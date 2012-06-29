@@ -28,7 +28,7 @@ namespace HydraBot.Gui.ViewModels
         public void Start(string name)
         {
             Bot hydraBot = new Bot();
-            hydraBot.SeedWorkQueue(_urlBox);
+            hydraBot.StartLocation(_urlBox);
 
         }
     }

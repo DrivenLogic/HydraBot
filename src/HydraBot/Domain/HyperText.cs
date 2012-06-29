@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace HydraBot.Domain
 {
     /// <summary>
-    /// A pointer to a web based resource a url/uri
+    /// Represents a text download location
     /// </summary>
     public class HyperTextPointer : IAssetPointer 
     {

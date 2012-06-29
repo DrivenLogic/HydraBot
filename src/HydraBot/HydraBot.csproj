@@ -46,6 +46,7 @@
   <ItemGroup>
     <Compile Include="Bot.cs" />
     <Compile Include="DataStructures\CompletedTracker.cs" />
+    <Compile Include="Domain\WebRequestDownloader.cs" />
     <Compile Include="Tools\ExtensionMethods.cs" />
     <Compile Include="DataStructures\WorkStatusTracker.cs" />
     <Compile Include="DataStructures\WorkQueues.cs" />

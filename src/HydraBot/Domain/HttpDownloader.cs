@@ -18,13 +18,10 @@ namespace HydraBot.Domain
     public class HttpDownloader : IDownload
     {
         private static Logger _log = LogManager.GetCurrentClassLogger();
-        private HttpParser parser;
-
-        public IAssetPointer AssetPointer { get; set; }
 
         public HttpDownloader()
         {
-            parser = new HttpParser();
+
         }
 
         /// <summary>
@@ -42,7 +39,7 @@ namespace HydraBot.Domain
         /// </summary>
         /// <param name="uri"></param>
         /// <returns></returns>
-        public async Task GetText(string uri)
+        public async Task<string> GetText(string uri)
         {
             // .net 4.5 HttpClient
             HttpClient client = new HttpClient();
@@ -53,13 +50,6 @@ namespace HydraBot.Domain
             string result = await response.Content.ReadAsStringAsync();
 
             _log.Info("Completed hypertext download");
-
-            //we have the response, put a parse task on the work queue
-            Task parseTask = parser.Parse(result);
-
-            WorkQueues.ParseTaskQueue.Enqueue(parseTask);
-
-            //place marker in completed tracker.
         }
 
         /// <summary>
@@ -67,7 +57,7 @@ namespace HydraBot.Domain
         /// </summary>
         /// <param name="uri"></param>
         /// <returns></returns>
-        public async Task GetBinary(string uri)
+        public async Task<byte[]> GetBinary(string uri)
         {
             // .net 4.5 HttpClient
             HttpClient client = new HttpClient();
@@ -76,29 +66,5 @@ namespace HydraBot.Domain
             response.EnsureSuccessStatusCode();
             byte[] binary = await response.Content.ReadAsByteArrayAsync();
         }
-
-        ///// <summary>
-        ///// from the TAP docs
-        ///// </summary>
-        ///// <param name="url"></param>
-        ///// <param name="cancellationToken"></param>
-        ///// <param name="progress"></param>
-        ///// <returns></returns>
-        //public static async Task<byte[]> DownloadDataAsync(
-        //    string url,
-        //    CancellationToken cancellationToken,
-        //    IProgress<long> progress)
-        //{
-        //    using (var request = WebRequest.Create(url))
-        //    using (var response = await request.GetResponseAsync())
-        //    using (var responseStream = response.GetResponseStream())
-        //    using (var result = new MemoryStream())
-        //    {
-        //        await responseStream.CopyToAsync(
-        //            result, cancellationToken, progress);
-        //        return result.ToArray();
-        //    }
-        //}
-
     }
 }

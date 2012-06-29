@@ -11,7 +11,7 @@ namespace HydraBot.Domain
     /// </summary>
     public interface IDownload
     {
-        Task GetText(string uri);
-        Task GetBinary(string uri);
+        Task<string> GetText(string uri);
+        Task<byte[]> GetBinary(string uri);
     }
 }

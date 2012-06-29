@@ -11,6 +11,6 @@ namespace HydraBot.Domain
     /// </summary>
     public interface IParse
     {
-        Task Parse(string input);
+        Task<IEnumerable<string>> Parse(string input);
     }
 }

@@ -19,12 +19,15 @@ namespace HydraBot
 
         private readonly int _conncurrencyLimit = 3;
         private readonly HttpDownloader _downloader;
+        private readonly HttpParser _parser;
 
         /// <summary>
         /// ctor        
         /// </summary>
         public Bot()
         {
+            // DI would be nice...
+            _parser = new HttpParser();
             _downloader = new HttpDownloader();
         }
 
@@ -32,7 +35,7 @@ namespace HydraBot
         /// manually add the first task to the queue
         /// </summary>
         /// <param name="startLocation"></param>
-        public void SeedWorkQueue(string startLocation)
+        public void StartLocation(string startLocation)
         {
             _downloader.SeedWorkQueue(new HyperTextPointer(startLocation));
         }

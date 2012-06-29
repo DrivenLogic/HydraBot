@@ -13,7 +13,7 @@ namespace HydraBot.Tests.Unit
             Bot bot = new Bot();
 
             // Act
-            bot.SeedWorkQueue("http://www.flickr.com/search/?q=miranda+kerr&f=hp");
+            bot.StartLocation("http://www.flickr.com/search/?q=miranda+kerr&f=hp");
 
             // Assert
             Assert.True(WorkQueues.DownloadTaskQueue.Count > 0);
@@ -26,7 +26,7 @@ namespace HydraBot.Tests.Unit
             Bot bot = new Bot();
             
             // Act
-            bot.SeedWorkQueue("http://www.flickr.com/search/?q=miranda+kerr&f=hp");
+            bot.StartLocation("http://www.flickr.com/search/?q=miranda+kerr&f=hp");
             bot.ProcessTasks();
         }
     }

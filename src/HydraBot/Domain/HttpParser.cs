@@ -17,29 +17,21 @@ namespace HydraBot.Domain
     public class HttpParser : IParse
     {
         private Logger _log = LogManager.GetCurrentClassLogger();
-
-        private HttpDownloader _httpDownloader;
+        private HttpDownloader _httpDownloader = new HttpDownloader();
 
         public HttpParser()
         {
-            _httpDownloader = new HttpDownloader();
+         
         }
 
-        public async Task Parse(string hyperText)
+        public async Task<IEnumerable<string>> Parse(string hyperText)
         {
             await Task.Run(() =>
                                {
                                    Regex linkMatcher = RegexLib.HyperLinkRegex();
                                    MatchCollection matchCollection = linkMatcher.Matches(hyperText);
 
-                                   matchCollection.Cast<Match>()
-                                       .ToList()
-                                       .ForEach
-                                       (m =>
-                                            {
-                                                WorkQueues.DownloadTaskQueue.Enqueue(_httpDownloader.GetText(m.Value));
-                                                _log.Trace("Found link: {0}", m.Value);
-                                            });
+                                   return matchCollection.Cast<String>();
                                });
         }
     }
