@@ -42,11 +42,15 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Integration\HttpParserTests.cs" />
     <Compile Include="Unit\BotTests.cs" />
     <Compile Include="Integration\HttpDownloaderTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Integration\SampleMarkup.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <None Include="App.config" />
     <Content Include="NLog.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

@@ -24,15 +24,21 @@ namespace HydraBot.Domain
          
         }
 
-        public async Task<IEnumerable<string>> Parse(string hyperText)
+        /// <summary>
+        /// A parse task 
+        /// pulls links out of a segment of hypertext
+        /// </summary>
+        /// <param name="hyperText"></param>
+        /// <returns></returns>
+        public async Task<IEnumerable<Match>> Parse(string hyperText)
         {
-            await Task.Run(() =>
-                               {
-                                   Regex linkMatcher = RegexLib.HyperLinkRegex();
-                                   MatchCollection matchCollection = linkMatcher.Matches(hyperText);
-
-                                   return matchCollection.Cast<String>();
-                               });
+            IEnumerable<Match> result = await Task.Run(() =>
+                                                            {
+                                                                Regex linkMatcher = RegexLib.HyperLinkRegex();
+                                                                MatchCollection matchCollection = linkMatcher.Matches(hyperText);
+                                                                return matchCollection.Cast<Match>();
+                                                            });
+            return result;
         }
     }
 }

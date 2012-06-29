@@ -3,6 +3,7 @@ using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using HydraBot.DataStructures;
 using HydraBot.Domain;
@@ -26,7 +27,6 @@ namespace HydraBot
         /// </summary>
         public Bot()
         {
-            // DI would be nice...
             _parser = new HttpParser();
             _downloader = new HttpDownloader();
         }
@@ -47,28 +47,55 @@ namespace HydraBot
         {
             while (ThereIsWorkToBeDone())
             {
-                //downloading
-                IEnumerable<Task> downloadTasks;
+                //downloading of hypertext
+                IEnumerable<Task> downloadTasks = WorkQueues.DownloadHyperTextQueue.EnumerableDequeue().Take(ChunkingSize(
+                        WorkQueues.DownloadHyperTextQueue, _conncurrencyLimit)).ToList();
 
-                downloadTasks = WorkQueues.DownloadTaskQueue.EnumerableDequeue().Take(ChunkingSize(
-                        WorkQueues.DownloadTaskQueue, _conncurrencyLimit));
-                
-                //mark progress tracker 
-
-                // wait for all the async downloads to complete
-                Task downloadResult = Task.WhenAll(downloadTasks);
+                //start each task and supply a continuation
+                foreach (Task<string> task in downloadTasks)
+                {
+                    // save text
+                    task.ContinueWith(t => UpdateParseTaskQueue(t));
+                }
 
                 // parsing
-                IEnumerable<Task> parseTasks;
+                IEnumerable<IEnumerable<Match>> parseTasks;
 
                 parseTasks = WorkQueues.ParseTaskQueue.EnumerableDequeue().Take(ChunkingSize(
-                        WorkQueues.ParseTaskQueue, _conncurrencyLimit));
-                
+                        WorkQueues.ParseTaskQueue, _conncurrencyLimit)).ToList();
+
+                foreach (Task<IEnumerable<Match>> task in parseTasks)
+                {
+                    // save download tasks 
+                    task.ContinueWith(t => UpdateDownloadQueue(t));
+                }
+
+                //binary downloading
+
+
+
                 //mark progress tracker
 
                 // wait for all the async parsing tasks to complete
-                Task.WhenAll(parseTasks);
+                //Task.WhenAll(parseTasks);
             }
+        }
+
+
+
+        private void UpdateDownloadHyperTextQueue(Task<string> task)
+        {
+
+        }
+
+        private void SaveBinariesToDisk(Task<byte[]> task)
+        {
+        
+        
+        }
+
+        private void UpdateParseTaskQueue(Task<IEnumerable<Match>> task)
+        {
         }
 
 

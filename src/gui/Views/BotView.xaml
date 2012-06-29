@@ -6,7 +6,7 @@
              mc:Ignorable="d" Height="309" Width="655"
              >
     <StackPanel>
-        <TextBox x:Name="UrlBox" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="enter start url" Width="655"/>
+        <TextBox x:Name="UrlBox" Text="{Binding UrlBox}" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Width="655"/>
         <Button x:Name="Start" Content="Start Bot" HorizontalAlignment="Left" Width="655"/>
 
     </StackPanel>

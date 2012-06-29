@@ -7,13 +7,8 @@ using Caliburn.Micro;
 
 namespace HydraBot.Gui.ViewModels
 {
-    public class BotViewModel : Screen
+    public class BotViewModel : PropertyChangedBase
     {
-        public BotViewModel()
-        {
-            
-        }
-
         private string _urlBox;
         public string UrlBox
         {
@@ -28,8 +23,8 @@ namespace HydraBot.Gui.ViewModels
         public void Start(string name)
         {
             Bot hydraBot = new Bot();
-            hydraBot.StartLocation(_urlBox);
-
+            hydraBot.StartLocation(UrlBox);
+            hydraBot.ProcessTasks(this);
         }
     }
 }

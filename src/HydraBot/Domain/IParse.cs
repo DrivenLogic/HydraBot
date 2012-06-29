@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace HydraBot.Domain
@@ -11,6 +12,6 @@ namespace HydraBot.Domain
     /// </summary>
     public interface IParse
     {
-        Task<IEnumerable<string>> Parse(string input);
+        Task<IEnumerable<Match>> Parse(string input);
     }
 }

@@ -4,6 +4,6 @@
         Title="ShellView" Height="300" Width="300">
 <StackPanel>
         <Button x:Name="OpenModeless"
-		        Content="Open Window" />
+		        Content="Configure new Bot" />
     </StackPanel>
 </Window>

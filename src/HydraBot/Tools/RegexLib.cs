@@ -14,7 +14,7 @@ namespace HydraBot.Tools
             Regex hyperLinkRegex = new Regex(
 
                 //basic example for links with extensions
-                @"(?<=href="")([^""']*?.)?(\.html|\.htm|\.php)(?:/?)([^""']*?)",
+                //@"(?<=href="")([^""']*?.)?(\.html|\.htm|\.php)(?:/?)([^""']*?)",
 
                 //This regex deals with pages that are badly formed and donot use quotes around links, may not match all links.
                 //@"(?<=href\=).*?(\.html|\.php|\.htm|\.pl|\.js)(?:/?)([^>""']*)",
@@ -24,7 +24,7 @@ namespace HydraBot.Tools
 
                 // for newer REST style resorces that dont have extension for example: /order/34/ 
                 // this will not match any link with a . (period contained within)
-                //@"(?<=href="")([^""'\.]*)(?=[""'])",
+                @"(?<=href="")([^""'\.]*)(?=[""'])",
 
                 RegexOptions.IgnoreCase
                 | RegexOptions.Multiline
