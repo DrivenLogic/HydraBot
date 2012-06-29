@@ -17,7 +17,20 @@ namespace HydraBot.Tests.Unit
             bot.SeedWorkQueue(hyperTextPointer);
 
             // Assert
-            Assert.True(WorkQueues.ParseTaskQueue.Count > 0);
+            Assert.True(WorkQueues.DownloadTaskQueue.Count > 0);
+        }
+
+        [Fact]
+        public void IsTaskRunnerFunctional()
+        {
+            // Arrange
+            HyperTextPointer hyperTextPointer = new HyperTextPointer("http://www.flickr.com/search/?q=miranda+kerr&f=hp");
+
+            // Act
+            Bot bot = new Bot();
+            bot.SeedWorkQueue(hyperTextPointer);
+            bot.ProcessTasks();
+
         }
     }
 }

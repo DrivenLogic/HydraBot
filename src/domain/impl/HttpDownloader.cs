@@ -17,11 +17,13 @@ namespace HydraBot.Domain.impl
     public class HttpDownloader : IDownload
     {
         private static Logger _log = LogManager.GetCurrentClassLogger();
+        private HttpParser parser;
+
         public IAssetPointer AssetPointer { get; set; }
 
         public HttpDownloader()
         {
-            
+            parser = new HttpParser();
         }
 
         /// <summary>
@@ -29,7 +31,7 @@ namespace HydraBot.Domain.impl
         /// </summary>
         /// <param name="uri"></param>
         /// <returns></returns>
-        public async Task<string> GetText(string uri)
+        public async Task GetHyperText(string uri)
         {
             // .net 4.5 HttpClient
             HttpClient client = new HttpClient();
@@ -41,7 +43,11 @@ namespace HydraBot.Domain.impl
 
             _log.Info("Completed hypertext download");
 
-            return result;
+
+            //we have the response, put a parse task on the work queue
+            Task<List<string>> parseTask = parser.Parse(result);
+
+            WorkQueues.
         }
 
         /// <summary>
@@ -58,6 +64,8 @@ namespace HydraBot.Domain.impl
             response.EnsureSuccessStatusCode();
             return await response.Content.ReadAsByteArrayAsync();
         }
+
+
 
         ///// <summary>
         ///// from the TAP docs

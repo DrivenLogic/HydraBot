@@ -12,6 +12,6 @@ namespace HydraBot.Domain
     public interface IParse
     {
         IAssetPointer AssetPointer { get; set; }
-        Task<List<IParse>> Parse(string input);
+        Task<List<TaskIDownload>> Parse(string input);
     }
 }

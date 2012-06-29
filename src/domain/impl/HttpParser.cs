@@ -12,9 +12,12 @@ namespace HydraBot.Domain.impl
     public class HttpParser : IParse
     {
         public IAssetPointer AssetPointer { get; set; }
-        public Task<List<IParse>> Parse(string input)
+
+        public Task<> Parse(string input)
         {
-            throw new NotImplementedException();
+            // tease out out all types of links 
+           // pull out all the assets (links and binaries) 
+
         }
     }
 }

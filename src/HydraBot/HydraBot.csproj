@@ -41,6 +41,7 @@
   <ItemGroup>
     <Compile Include="Bot.cs" />
     <Compile Include="DataStructures\CompletedTracker.cs" />
+    <Compile Include="DataStructures\ExtensionMethods.cs" />
     <Compile Include="DataStructures\WorkStatusTracker.cs" />
     <Compile Include="DataStructures\WorkQueues.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
