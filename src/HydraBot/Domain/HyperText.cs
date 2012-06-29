@@ -12,6 +12,7 @@ namespace HydraBot.Domain
     public class HyperTextPointer : IAssetPointer 
     {
         public string Uri { get; set; }
+
         public HyperTextPointer(string uri)
         {
             Uri = uri;

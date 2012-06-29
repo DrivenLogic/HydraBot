@@ -11,7 +11,6 @@ namespace HydraBot.Domain
     /// </summary>
     public interface IDownload
     {
-        IAssetPointer AssetPointer { get; set; }
         Task GetText(string uri);
         Task GetBinary(string uri);
     }

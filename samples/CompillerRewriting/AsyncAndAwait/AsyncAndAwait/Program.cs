@@ -13,9 +13,9 @@ namespace AsyncAndAwait
         {
             DoWork();
 
-            Console.WriteLine("main waiting...");
+            Console.WriteLine("main thread done...");
+            Console.WriteLine("");
             Console.ReadLine();
-            Console.WriteLine("main done.");
         }
 
         private async static void DoWork()
@@ -24,9 +24,11 @@ namespace AsyncAndAwait
                                {
                                    Thread.Sleep(5000);
                                    Console.WriteLine("hello im a task!");
+                                   Console.WriteLine("");
                                }).ContinueWith(MrContinuation);       
 
             Console.WriteLine("implicit continuation");
+            Console.WriteLine("");
         }
 
         /// <summary>
@@ -35,10 +37,12 @@ namespace AsyncAndAwait
         /// <param name="task"></param>
         private static void MrContinuation(Task task)
         {
+            Console.WriteLine("hello im an explicit continuation");
             Console.WriteLine("Did the task complete sucessfully? the task status? : {0}", task.Status);
             Console.WriteLine("Im a Continuation, i will be on a worker thread my id is: {0} ", Thread.CurrentThread.ManagedThreadId);
             Console.WriteLine("I have been to the pool: {0}", Thread.CurrentThread.IsThreadPoolThread);
             Console.WriteLine("Its better in the background: {0}", Thread.CurrentThread.IsBackground);
+            Console.WriteLine("");
         }
     }
 }

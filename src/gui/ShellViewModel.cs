@@ -20,7 +20,7 @@ namespace HydraBot.Gui
         public void OpenModeless()
         {
             var result = _windowManager.ShowDialog(new BotViewModel());
-            //_windowManager.ShowWindow(new BotViewModel(), "Modeless");
+            //_windowManager.ShowWindow(new BotViewModel(), "Modeless"); // not working? 
         }
     }
 }

@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using HydraBot.DataStructures;
 using HydraBot.Domain;
+using NLog;
 
 namespace HydraBot
 {
@@ -14,9 +15,10 @@ namespace HydraBot
     /// </summary>
     public class Bot
     {
+        private static Logger _log = LogManager.GetCurrentClassLogger();
+
         private readonly int _conncurrencyLimit = 3;
         private readonly HttpDownloader _downloader;
-        private readonly IParse _parser;
 
         /// <summary>
         /// ctor        
@@ -24,17 +26,15 @@ namespace HydraBot
         public Bot()
         {
             _downloader = new HttpDownloader();
-            _parser = new HttpParser();
         }
 
         /// <summary>
         /// manually add the first task to the queue
         /// </summary>
         /// <param name="startLocation"></param>
-        public void SeedWorkQueue(IAssetPointer startLocation)
+        public void SeedWorkQueue(string startLocation)
         {
-            Task hypertextTask  = _downloader.GetHyperText(startLocation.Uri);
-            WorkQueues.DownloadTaskQueue.Enqueue(hypertextTask);
+            _downloader.SeedWorkQueue(new HyperTextPointer(startLocation));
         }
 
         /// <summary>
@@ -45,22 +45,25 @@ namespace HydraBot
             while (ThereIsWorkToBeDone())
             {
                 //downloading
-                IEnumerable<Task<string>> downloadTasks;
+                IEnumerable<Task> downloadTasks;
 
                 downloadTasks = WorkQueues.DownloadTaskQueue.EnumerableDequeue().Take(ChunkingSize(
                         WorkQueues.DownloadTaskQueue, _conncurrencyLimit));
+                
+                //mark progress tracker 
 
                 // wait for all the async downloads to complete
-                Task.WhenAll(downloadTasks);
-
+                Task downloadResult = Task.WhenAll(downloadTasks);
 
                 // parsing
-                IEnumerable<Task<IParse>> parseTasks;
+                IEnumerable<Task> parseTasks;
 
                 parseTasks = WorkQueues.ParseTaskQueue.EnumerableDequeue().Take(ChunkingSize(
                         WorkQueues.ParseTaskQueue, _conncurrencyLimit));
+                
+                //mark progress tracker
 
-                // wait for all the saunc parsing tasks to complete
+                // wait for all the async parsing tasks to complete
                 Task.WhenAll(parseTasks);
             }
         }
@@ -82,6 +85,10 @@ namespace HydraBot
 
         // handle errors 
 
+        /// <summary>
+        /// this check should be cut up be queue type
+        /// </summary>
+        /// <returns></returns>
         private bool ThereIsWorkToBeDone()
         {
             return ((WorkQueues.ParseTaskQueue.Count > 0) || (WorkQueues.DownloadTaskQueue.Count > 0));

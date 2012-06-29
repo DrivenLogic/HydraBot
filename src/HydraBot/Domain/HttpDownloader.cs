@@ -28,6 +28,16 @@ namespace HydraBot.Domain
         }
 
         /// <summary>
+        /// manually add the first task to the queue
+        /// </summary>
+        /// <param name="startLocation"></param>
+        public void SeedWorkQueue(IAssetPointer startLocation)
+        {
+            Task hypertextTask = GetText(startLocation.Uri);
+            WorkQueues.DownloadTaskQueue.Enqueue(hypertextTask);
+        }
+
+        /// <summary>
         /// An async task that returns a hypertext string from a uri
         /// </summary>
         /// <param name="uri"></param>
@@ -44,11 +54,12 @@ namespace HydraBot.Domain
 
             _log.Info("Completed hypertext download");
 
-
             //we have the response, put a parse task on the work queue
             Task parseTask = parser.Parse(result);
 
-            WorkQueues.ParseTaskQueue.Enqueue();
+            WorkQueues.ParseTaskQueue.Enqueue(parseTask);
+
+            //place marker in completed tracker.
         }
 
         /// <summary>
@@ -56,17 +67,15 @@ namespace HydraBot.Domain
         /// </summary>
         /// <param name="uri"></param>
         /// <returns></returns>
-        public async Task<byte[]> GetBinary(string uri)
+        public async Task GetBinary(string uri)
         {
             // .net 4.5 HttpClient
             HttpClient client = new HttpClient();
 
             HttpResponseMessage response = await client.GetAsync(uri);
             response.EnsureSuccessStatusCode();
-            return await response.Content.ReadAsByteArrayAsync();
+            byte[] binary = await response.Content.ReadAsByteArrayAsync();
         }
-
-
 
         ///// <summary>
         ///// from the TAP docs

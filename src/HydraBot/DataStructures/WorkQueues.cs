@@ -13,16 +13,16 @@ namespace HydraBot.DataStructures
     /// </summary>
     public static class WorkQueues
     {
-        public static ConcurrentQueue<Task<string>> DownloadTaskQueue { get; set; }
-        public static ConcurrentQueue<Task<IParse>> ParseTaskQueue { get; set; }
+        public static ConcurrentQueue<Task> DownloadTaskQueue { get; set; }
+        public static ConcurrentQueue<Task> ParseTaskQueue { get; set; }
 
         /// <summary>
         /// setup our thread safe collections. 
         /// </summary>
         static WorkQueues()
         {
-            DownloadTaskQueue = new ConcurrentQueue<Task<string>>();
-            ParseTaskQueue = new ConcurrentQueue<Task<IParse>>();
+            DownloadTaskQueue = new ConcurrentQueue<Task>();
+            ParseTaskQueue = new ConcurrentQueue<Task>();
         }
     }
 }

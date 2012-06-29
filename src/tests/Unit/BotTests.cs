@@ -1,5 +1,5 @@
 ﻿using HydraBot.DataStructures;
-using HydraBot.Domain.impl;
+using HydraBot.Domain;
 using Xunit;
 
 namespace HydraBot.Tests.Unit
@@ -10,11 +10,10 @@ namespace HydraBot.Tests.Unit
         public void BotStartSeedsParseWorkQueue()
         {
             // Arrange
-            HyperTextPointer hyperTextPointer = new HyperTextPointer("http://www.flickr.com/search/?q=miranda+kerr&f=hp");
+            Bot bot = new Bot();
 
             // Act
-            Bot bot = new Bot();
-            bot.SeedWorkQueue(hyperTextPointer);
+            bot.SeedWorkQueue("http://www.flickr.com/search/?q=miranda+kerr&f=hp");
 
             // Assert
             Assert.True(WorkQueues.DownloadTaskQueue.Count > 0);
@@ -24,13 +23,11 @@ namespace HydraBot.Tests.Unit
         public void IsTaskRunnerFunctional()
         {
             // Arrange
-            HyperTextPointer hyperTextPointer = new HyperTextPointer("http://www.flickr.com/search/?q=miranda+kerr&f=hp");
-
-            // Act
             Bot bot = new Bot();
-            bot.SeedWorkQueue(hyperTextPointer);
+            
+            // Act
+            bot.SeedWorkQueue("http://www.flickr.com/search/?q=miranda+kerr&f=hp");
             bot.ProcessTasks();
-
         }
     }
 }

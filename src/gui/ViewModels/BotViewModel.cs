@@ -24,5 +24,12 @@ namespace HydraBot.Gui.ViewModels
                 NotifyOfPropertyChange(() => UrlBox);
             }
         }
+
+        public void Start(string name)
+        {
+            Bot hydraBot = new Bot();
+            hydraBot.SeedWorkQueue(_urlBox);
+
+        }
     }
 }

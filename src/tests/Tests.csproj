@@ -62,6 +62,10 @@
       <Project>{bbcc35e9-ec63-4fc1-8692-39c179a4b164}</Project>
       <Name>Gui</Name>
     </ProjectReference>
+    <ProjectReference Include="..\HydraBot\HydraBot.csproj">
+      <Project>{55e8f4c9-f2d7-49f6-b35a-d4adde31d383}</Project>
+      <Name>HydraBot</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

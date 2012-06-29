@@ -2,7 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
+using System.Threading;
 using System.Threading.Tasks;
+using HydraBot.DataStructures;
+using HydraBot.Tools;
+using NLog;
 
 namespace HydraBot.Domain
 {
@@ -11,17 +16,31 @@ namespace HydraBot.Domain
     /// </summary>
     public class HttpParser : IParse
     {
-        public IAssetPointer AssetPointer { get; set; }
+        private Logger _log = LogManager.GetCurrentClassLogger();
 
-        public async Task Parse(string input)
+        private HttpDownloader _httpDownloader;
+
+        public HttpParser()
         {
-            
+            _httpDownloader = new HttpDownloader();
+        }
 
-            // tease out out all types of links 
-           // pull out all the assets (links and binaries) 
+        public async Task Parse(string hyperText)
+        {
+            await Task.Run(() =>
+                               {
+                                   Regex linkMatcher = RegexLib.HyperLinkRegex();
+                                   MatchCollection matchCollection = linkMatcher.Matches(hyperText);
 
-            // add the correct task type to the download queue. 
-
+                                   matchCollection.Cast<Match>()
+                                       .ToList()
+                                       .ForEach
+                                       (m =>
+                                            {
+                                                WorkQueues.DownloadTaskQueue.Enqueue(_httpDownloader.GetText(m.Value));
+                                                _log.Trace("Found link: {0}", m.Value);
+                                            });
+                               });
         }
     }
 }
