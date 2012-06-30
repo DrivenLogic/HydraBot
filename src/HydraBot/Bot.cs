@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -55,11 +57,11 @@ namespace HydraBot
                 foreach (Task<string> task in downloadTasks)
                 {
                     // save text
-                    task.ContinueWith(t => UpdateParseTaskQueue(t));
+                    task.ContinueWith(UpdateDownloadHyperTextQueue);
                 }
 
                 // parsing
-                IEnumerable<IEnumerable<Match>> parseTasks;
+                IEnumerable<Task<IEnumerable<Match>>> parseTasks;
 
                 parseTasks = WorkQueues.ParseTaskQueue.EnumerableDequeue().Take(ChunkingSize(
                         WorkQueues.ParseTaskQueue, _conncurrencyLimit)).ToList();
@@ -67,53 +69,34 @@ namespace HydraBot
                 foreach (Task<IEnumerable<Match>> task in parseTasks)
                 {
                     // save download tasks 
-                    task.ContinueWith(t => UpdateDownloadQueue(t));
+                    task.ContinueWith(UpdateParseTaskQueue);
                 }
 
-                //binary downloading
-
-
-
-                //mark progress tracker
-
-                // wait for all the async parsing tasks to complete
-                //Task.WhenAll(parseTasks);
+                //todo: binary downloading
             }
         }
 
-
-
+        /// <summary>
+        /// Continuation for hypertext downloads
+        /// </summary>
+        /// <param name="task"></param>
         private void UpdateDownloadHyperTextQueue(Task<string> task)
         {
-
+            // add to parsing queue.
+            WorkQueues.DownloadHyperTextQueue.Enqueue(task);
         }
 
         private void SaveBinariesToDisk(Task<byte[]> task)
         {
-        
-        
+            // dump to disk      
+            File.WriteAllBytes("Downloads/", task.Result);
         }
 
         private void UpdateParseTaskQueue(Task<IEnumerable<Match>> task)
         {
+            // split results and create new tasks. 
+            //task.Result.ToList().ForEach(WorkQueues.DownloadHyperTextQueue.Enqueue());
         }
-
-
-
-
-        // read some config maybe?
-
-        // traverse the work queue 
-        // pull out and action async tasks. 
-        // do this based on throttling
-
-        // tasks that return tasks should add to the work queue. 
-
-        // report status
-
-        // report progress
-
-        // handle errors 
 
         /// <summary>
         /// this check should be cut up be queue type
@@ -121,7 +104,7 @@ namespace HydraBot
         /// <returns></returns>
         private bool ThereIsWorkToBeDone()
         {
-            return ((WorkQueues.ParseTaskQueue.Count > 0) || (WorkQueues.DownloadTaskQueue.Count > 0));
+            return ((WorkQueues.ParseTaskQueue.Count > 0) || (WorkQueues.DownloadHyperTextQueue.Count > 0));
         }
 
         /// <summary>

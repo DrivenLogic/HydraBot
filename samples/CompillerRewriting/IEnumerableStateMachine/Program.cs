@@ -26,7 +26,7 @@ namespace IEnumerableStateMachine
                 yield return i;
             }
 
-           // return new EnumerableQuery<int>(new int[] {0, 1, 2, 3});
+           //return new EnumerableQuery<int>(new int[] {0, 1, 2, 3});
         }
     }
 }

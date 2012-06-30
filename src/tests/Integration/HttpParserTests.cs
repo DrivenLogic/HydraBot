@@ -24,6 +24,8 @@ namespace HydraBot.Tests.Integration
             result.ToList().ForEach(r => Console.WriteLine(r.Value));
 
             //assert
+            // yeah yeah could assert a known match collection length.
+
         }
     }
 }
